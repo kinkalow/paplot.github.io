@@ -583,20 +583,22 @@
     var handle_id = "#float" + idx + "_h.float_handle";
     var fh = d3.select(handle_id);
     header_region = [handle_id, fh.style("position"), fh.style("top"), fh.style("height"), fh.style("left"), fh.style("width")];
-    d3.select(handle_id).style("position", "fixed");
-    d3.select(handle_id).style("top", "0px");
-    d3.select(handle_id).style("height", document.body.clientHeight);
-    d3.select(handle_id).style("left", "0px");
-    d3.select(handle_id).style("width", document.body.clientWidth);
+    d3.select(handle_id)
+      .style("position", "fixed")
+      .style("top", "0px")
+      .style("height", document.body.clientHeight)
+      .style("left", "0px")
+      .style("width", document.body.clientWidth);
   }
 
   function restore_header_region() {
     if (header_region.length == 0) return;
-    d3.select(header_region[0]).style("position", header_region[1]);
-    d3.select(header_region[0]).style("top", header_region[2]);
-    d3.select(header_region[0]).style("height", header_region[3]);
-    d3.select(header_region[0]).style("left", header_region[4]);
-    d3.select(header_region[0]).style("width", header_region[5]);
+    d3.select(header_region[0])
+      .style("position", header_region[1])
+      .style("top", header_region[2])
+      .style("height", header_region[3])
+      .style("left", header_region[4])
+      .style("width", header_region[5]);
     header_region.length = 0;
   }
 
@@ -610,6 +612,7 @@
   var old_target_thumbs;
   var z_value = 1;
   var hi_time = 200;
+  var saved_bp_nodes;
 
   //
   // Bar graph
@@ -747,19 +750,34 @@
     // Delete
     if (bundles[ID] !== undefined) delete_overlay();
 
-    // Gather target data
-    var data;
-    if (target_thumbs.length != 0) {
-      data = ca_data.get_data_detail(target_thumbs[0].id);
-      for (var i = 1; i < target_thumbs.length; i++) /* Loop by target thumbnails */ {
-        var d = ca_data.get_data_detail(target_thumbs[i].id);
+    // Save breakpoint information
+    if (saved_bp_nodes === undefined) {
+      saved_bp_nodes = {};
+      for (var i = 0; i < ca_data.index_ID.length; i++) {
+        var id = ca_data.index_ID[i];
+        var d = ca_data.get_data_detail(id);
+        saved_bp_nodes[id] = [];
         for (var j = 0; j < d.length; j++) /* Loop by group */ {
           for (var k = 0; k < d[j].length; k++) /* Loop by node */ {
             if (d[j][k].ends.length != 0) {
-              data[j][k].ends = data[j][k].ends.concat(d[j][k].ends);
-              data[j][k].tooltip = data[j][k].tooltip.concat(d[j][k].tooltip);
+              saved_bp_nodes[id].push([j, k, d[j][k].ends, d[j][k].tooltip]);
             }
           }
+        }
+      }
+    }
+
+    // Gather target data
+    var data;
+    if (target_thumbs.length != 0) {
+      data = ca_data.get_data_detail("");
+      for (var i = 0; i < target_thumbs.length; i++) {
+        var id = target_thumbs[i].id;
+        for (var j = 0; j < saved_bp_nodes[id].length; j++) {
+          var group = saved_bp_nodes[id][j][0];
+          var index = saved_bp_nodes[id][j][1];
+          Array.prototype.push.apply(data[group][index].ends, saved_bp_nodes[id][j][2]);
+          Array.prototype.push.apply(data[group][index].tooltip, saved_bp_nodes[id][j][3]);
         }
       }
     }
@@ -841,6 +859,34 @@
   function checkbox_reset() {
     ca_draw.checkbox_on();
   }
+
+  //
+  // Thumbnail titles
+  //
+
+  ca_draw.thumb_title_mouseover = function (thumbli_id) {
+    if (document.getElementById("cb_opt_title").checked)
+      d3.select(thumbli_id)
+        .style("overflow", "visible")
+        .style("text-overflow", "clip")
+        .style("white-space", "normal")
+        .style("word-break", "break-all")
+        .style("background-color", "#f2eded")
+        .style("margin", "-3px 0px 0px -3px")
+        .style("padding", "3px 3px 3px 3px");
+  };
+
+  ca_draw.thumb_title_mouseout = function (thumbli_id) {
+    if (document.getElementById("cb_opt_title").checked)
+      d3.select(thumbli_id)
+        .style("overflow", "hidden")
+        .style("text-overflow", "ellipsis")
+        .style("white-space", "nowrap")
+        .style("word-break", "normal")
+        .style("background-color", "white")
+        .style("margin", "0px")
+        .style("padding", "0px");
+  };
 
   //
   // Window action

@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="version">
-      Generated on 2020-10-05 15:51:16 for ca by paplot-0.5.8.
+      Generated on 2020-10-13 18:51:11 for ca by paplot-0.5.10.
     </div>
 
     <div class="container">
@@ -22,7 +22,7 @@
 
       <div id="checkbox_overlay">
         <div>
-          Overlay options
+          Options
           <div>
             <input type="checkbox" id="cb_opt_highlight" onclick="ca_draw.auto_overlaying('cb_opt_highlight')" checked />
             <label for="cb_opt_highlight">
@@ -39,6 +39,12 @@
             <input type="checkbox" id="cb_opt_checkbox" onclick="ca_draw.auto_overlaying('cb_opt_checkbox')" checked />
             <label for="cb_opt_checkbox">
               Automatic overlay when clicking circosplot checkboxes
+            </label>
+          </div>
+          <div>
+            <input type="checkbox" id="cb_opt_title" />
+            <label for="cb_opt_title">
+              Display the full title of circosplot on mouse hover
             </label>
           </div>
         </div>
@@ -68,16 +74,16 @@
       <!-- ### tumbnails ### -->
       <div>
         <ul>
-<li class="thumb" id="thumb0_li" style="text-overflow: ellipsis; white-space: wrap; overflow: hidden;"><label><strong><input type="checkbox" name="thumb_cb" value="0" checked="checked"onclick="ca_draw.auto_overlaying('cb_thumb')" /> SAMPLE1<br /></strong></label><div id="thumb0" onclick="ca_draw.show_float(event,'0','SAMPLE1')"></div></li>
-<li class="thumb" id="thumb1_li" style="text-overflow: ellipsis; white-space: wrap; overflow: hidden;"><label><strong><input type="checkbox" name="thumb_cb" value="1" checked="checked"onclick="ca_draw.auto_overlaying('cb_thumb')" /> SAMPLE10<br /></strong></label><div id="thumb1" onclick="ca_draw.show_float(event,'1','SAMPLE10')"></div></li>
-<li class="thumb" id="thumb2_li" style="text-overflow: ellipsis; white-space: wrap; overflow: hidden;"><label><strong><input type="checkbox" name="thumb_cb" value="2" checked="checked"onclick="ca_draw.auto_overlaying('cb_thumb')" /> SAMPLE2<br /></strong></label><div id="thumb2" onclick="ca_draw.show_float(event,'2','SAMPLE2')"></div></li>
-<li class="thumb" id="thumb3_li" style="text-overflow: ellipsis; white-space: wrap; overflow: hidden;"><label><strong><input type="checkbox" name="thumb_cb" value="3" checked="checked"onclick="ca_draw.auto_overlaying('cb_thumb')" /> SAMPLE3<br /></strong></label><div id="thumb3" onclick="ca_draw.show_float(event,'3','SAMPLE3')"></div></li>
-<li class="thumb" id="thumb4_li" style="text-overflow: ellipsis; white-space: wrap; overflow: hidden;"><label><strong><input type="checkbox" name="thumb_cb" value="4" checked="checked"onclick="ca_draw.auto_overlaying('cb_thumb')" /> SAMPLE4<br /></strong></label><div id="thumb4" onclick="ca_draw.show_float(event,'4','SAMPLE4')"></div></li>
-<li class="thumb" id="thumb5_li" style="text-overflow: ellipsis; white-space: wrap; overflow: hidden;"><label><strong><input type="checkbox" name="thumb_cb" value="5" checked="checked"onclick="ca_draw.auto_overlaying('cb_thumb')" /> SAMPLE5<br /></strong></label><div id="thumb5" onclick="ca_draw.show_float(event,'5','SAMPLE5')"></div></li>
-<li class="thumb" id="thumb6_li" style="text-overflow: ellipsis; white-space: wrap; overflow: hidden;"><label><strong><input type="checkbox" name="thumb_cb" value="6" checked="checked"onclick="ca_draw.auto_overlaying('cb_thumb')" /> SAMPLE6<br /></strong></label><div id="thumb6" onclick="ca_draw.show_float(event,'6','SAMPLE6')"></div></li>
-<li class="thumb" id="thumb7_li" style="text-overflow: ellipsis; white-space: wrap; overflow: hidden;"><label><strong><input type="checkbox" name="thumb_cb" value="7" checked="checked"onclick="ca_draw.auto_overlaying('cb_thumb')" /> SAMPLE7<br /></strong></label><div id="thumb7" onclick="ca_draw.show_float(event,'7','SAMPLE7')"></div></li>
-<li class="thumb" id="thumb8_li" style="text-overflow: ellipsis; white-space: wrap; overflow: hidden;"><label><strong><input type="checkbox" name="thumb_cb" value="8" checked="checked"onclick="ca_draw.auto_overlaying('cb_thumb')" /> SAMPLE8<br /></strong></label><div id="thumb8" onclick="ca_draw.show_float(event,'8','SAMPLE8')"></div></li>
-<li class="thumb" id="thumb9_li" style="text-overflow: ellipsis; white-space: wrap; overflow: hidden;"><label><strong><input type="checkbox" name="thumb_cb" value="9" checked="checked"onclick="ca_draw.auto_overlaying('cb_thumb')" /> SAMPLE9<br /></strong></label><div id="thumb9" onclick="ca_draw.show_float(event,'9','SAMPLE9')"></div></li>
+<li class="thumb" id="thumb0_li"><div class="thumb_head" id="thumb0_head"><label><input type="checkbox" name="thumb_cb" value="0" checked="checked" onclick="ca_draw.auto_overlaying('cb_thumb')" /><span class="thumb_title" onmouseover="ca_draw.thumb_title_mouseover('#thumb0_head')" onmouseout="ca_draw.thumb_title_mouseout('#thumb0_head')"><strong>SAMPLE1</strong></span></label></div><div class="thumb_circos" id="thumb0" onclick="ca_draw.show_float(event,'0','SAMPLE1')"></div></li>
+<li class="thumb" id="thumb1_li"><div class="thumb_head" id="thumb1_head"><label><input type="checkbox" name="thumb_cb" value="1" checked="checked" onclick="ca_draw.auto_overlaying('cb_thumb')" /><span class="thumb_title" onmouseover="ca_draw.thumb_title_mouseover('#thumb1_head')" onmouseout="ca_draw.thumb_title_mouseout('#thumb1_head')"><strong>SAMPLE10</strong></span></label></div><div class="thumb_circos" id="thumb1" onclick="ca_draw.show_float(event,'1','SAMPLE10')"></div></li>
+<li class="thumb" id="thumb2_li"><div class="thumb_head" id="thumb2_head"><label><input type="checkbox" name="thumb_cb" value="2" checked="checked" onclick="ca_draw.auto_overlaying('cb_thumb')" /><span class="thumb_title" onmouseover="ca_draw.thumb_title_mouseover('#thumb2_head')" onmouseout="ca_draw.thumb_title_mouseout('#thumb2_head')"><strong>SAMPLE2</strong></span></label></div><div class="thumb_circos" id="thumb2" onclick="ca_draw.show_float(event,'2','SAMPLE2')"></div></li>
+<li class="thumb" id="thumb3_li"><div class="thumb_head" id="thumb3_head"><label><input type="checkbox" name="thumb_cb" value="3" checked="checked" onclick="ca_draw.auto_overlaying('cb_thumb')" /><span class="thumb_title" onmouseover="ca_draw.thumb_title_mouseover('#thumb3_head')" onmouseout="ca_draw.thumb_title_mouseout('#thumb3_head')"><strong>SAMPLE3</strong></span></label></div><div class="thumb_circos" id="thumb3" onclick="ca_draw.show_float(event,'3','SAMPLE3')"></div></li>
+<li class="thumb" id="thumb4_li"><div class="thumb_head" id="thumb4_head"><label><input type="checkbox" name="thumb_cb" value="4" checked="checked" onclick="ca_draw.auto_overlaying('cb_thumb')" /><span class="thumb_title" onmouseover="ca_draw.thumb_title_mouseover('#thumb4_head')" onmouseout="ca_draw.thumb_title_mouseout('#thumb4_head')"><strong>SAMPLE4</strong></span></label></div><div class="thumb_circos" id="thumb4" onclick="ca_draw.show_float(event,'4','SAMPLE4')"></div></li>
+<li class="thumb" id="thumb5_li"><div class="thumb_head" id="thumb5_head"><label><input type="checkbox" name="thumb_cb" value="5" checked="checked" onclick="ca_draw.auto_overlaying('cb_thumb')" /><span class="thumb_title" onmouseover="ca_draw.thumb_title_mouseover('#thumb5_head')" onmouseout="ca_draw.thumb_title_mouseout('#thumb5_head')"><strong>SAMPLE5</strong></span></label></div><div class="thumb_circos" id="thumb5" onclick="ca_draw.show_float(event,'5','SAMPLE5')"></div></li>
+<li class="thumb" id="thumb6_li"><div class="thumb_head" id="thumb6_head"><label><input type="checkbox" name="thumb_cb" value="6" checked="checked" onclick="ca_draw.auto_overlaying('cb_thumb')" /><span class="thumb_title" onmouseover="ca_draw.thumb_title_mouseover('#thumb6_head')" onmouseout="ca_draw.thumb_title_mouseout('#thumb6_head')"><strong>SAMPLE6</strong></span></label></div><div class="thumb_circos" id="thumb6" onclick="ca_draw.show_float(event,'6','SAMPLE6')"></div></li>
+<li class="thumb" id="thumb7_li"><div class="thumb_head" id="thumb7_head"><label><input type="checkbox" name="thumb_cb" value="7" checked="checked" onclick="ca_draw.auto_overlaying('cb_thumb')" /><span class="thumb_title" onmouseover="ca_draw.thumb_title_mouseover('#thumb7_head')" onmouseout="ca_draw.thumb_title_mouseout('#thumb7_head')"><strong>SAMPLE7</strong></span></label></div><div class="thumb_circos" id="thumb7" onclick="ca_draw.show_float(event,'7','SAMPLE7')"></div></li>
+<li class="thumb" id="thumb8_li"><div class="thumb_head" id="thumb8_head"><label><input type="checkbox" name="thumb_cb" value="8" checked="checked" onclick="ca_draw.auto_overlaying('cb_thumb')" /><span class="thumb_title" onmouseover="ca_draw.thumb_title_mouseover('#thumb8_head')" onmouseout="ca_draw.thumb_title_mouseout('#thumb8_head')"><strong>SAMPLE8</strong></span></label></div><div class="thumb_circos" id="thumb8" onclick="ca_draw.show_float(event,'8','SAMPLE8')"></div></li>
+<li class="thumb" id="thumb9_li"><div class="thumb_head" id="thumb9_head"><label><input type="checkbox" name="thumb_cb" value="9" checked="checked" onclick="ca_draw.auto_overlaying('cb_thumb')" /><span class="thumb_title" onmouseover="ca_draw.thumb_title_mouseover('#thumb9_head')" onmouseout="ca_draw.thumb_title_mouseout('#thumb9_head')"><strong>SAMPLE9</strong></span></label></div><div class="thumb_circos" id="thumb9" onclick="ca_draw.show_float(event,'9','SAMPLE9')"></div></li>
 
         </ul>
       </div>

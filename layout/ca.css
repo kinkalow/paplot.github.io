@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+
 /**
  * Buttons
  */
@@ -34,7 +35,44 @@ input[id^="btn_"]:active {
   word-break: break-all;
 }
 
+.float_close {
+  position: relative;
+  width: 30px;
+  margin: 0px 10px;
+}
+
 .float_close:hover {
   background-color: #ff8787;
   border-color: #a64b4b;
+}
+
+
+/**
+ * thumbnails
+ */
+
+.thumb {
+  position: relative;
+}
+
+.thumb_head {
+  width: 95%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+  background-color: white;
+  z-index: 1;
+}
+
+.thumb_title {
+  margin-left: 5px;
+}
+
+.thumb_circos {
+  position: absolute;
+  top: 20;
+  left: 0;
 }
